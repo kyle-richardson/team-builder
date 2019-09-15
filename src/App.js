@@ -1,20 +1,27 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
+import Form from "./Form"
 
 function App() {
   const [memberList, setMemberList] = useState([{
     name: 'kyle',
-    age: '31'
+    email: 'test@test.com',
+    role: 'front-end'
     }, {
     name: 'lauren',
-    age: '29'
+    email: 'test2@test.com',
+    role: 'content creator'
   }])
   const [user, setUser] = useState({
     name: '',
-    age: ''
+    email: '',
+    role: ''
   })
 
+  const [isEdit, setIsEdit] = useState(false)
+
   useEffect(() => {
+  console.log(memberList);
   },[memberList])
 
     const handleChange = event => {
@@ -28,14 +35,23 @@ function App() {
       setMemberList(old => [...old, user])
     }
 
+    const handleEdit = event => {
+
+      setIsEdit(true)
+      console.log(`editing ${event.target.name}`)
+    }
+
   return (
     <div className="App">
-      <h1>Hello World</h1>
-      <form onSubmit={(e)=> handleSubmit(e)}>
-        <input type="text" name="name" value={user.name} onChange={e=> handleChange(e)}/>
-        <input type="text" name="age" value={user.age} onChange={e=> handleChange(e)}/>
-        <button>Add to member list</button>
-      </form>
+      <h1>Lambda Member List</h1>
+      <Form 
+        user={user} 
+        handleChange = {handleChange}
+        handleSubmit= {handleSubmit}
+        memberList= {memberList}
+        handleEdit={handleEdit}
+      />
+      
     </div>
   );
 }

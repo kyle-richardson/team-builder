@@ -5,7 +5,11 @@ const Form = (props) => {
 
     return (
         <div>
-            <Edit memberList={props.memberList} handleEdit={props.handleEdit}/>
+            <Edit 
+                memberList={props.memberList} 
+                handleEdit={props.handleEdit}
+                setMemberToEdit={props.setMemberToEdit}/>
+
             <form className="user-form" onSubmit={(e)=> props.handleSubmit(e)}>
                 <input 
                     className="text-input"

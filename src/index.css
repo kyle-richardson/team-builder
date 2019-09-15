@@ -67,3 +67,14 @@ code {
 .add-button:active {
   background-color: darkgray;
 }
+
+.members-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  /* margin-left: 100px; */
+}
+.member-card {
+  /* text-align: left; */
+}

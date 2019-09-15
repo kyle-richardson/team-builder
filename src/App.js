@@ -21,6 +21,7 @@ function App() {
   })
 
   const [isEdit, setIsEdit] = useState(false)
+  const [memberToEdit, setMemberToEdit] = useState({})
 
   useEffect(() => {
   console.log(memberList);
@@ -52,6 +53,7 @@ function App() {
         handleSubmit= {handleSubmit}
         memberList= {memberList}
         handleEdit={handleEdit}
+        setMemberToEdit={setMemberToEdit}
       />
     </div>
   );

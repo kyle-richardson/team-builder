@@ -3,15 +3,17 @@ import './App.css';
 import Form from "./Form"
 
 function App() {
-  const [memberList, setMemberList] = useState([{
-    name: 'kyle',
-    email: 'test@test.com',
-    role: 'front-end'
-    }, {
-    name: 'lauren',
-    email: 'test2@test.com',
-    role: 'content creator'
-  }])
+  const [memberList, setMemberList] = useState(
+    [{
+      name: 'kyle',
+      email: 'test@test.com',
+      role: 'front-end'
+    }, 
+    {
+      name: 'lauren',
+      email: 'test2@test.com',
+      role: 'content creator'
+    }])
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -32,7 +34,7 @@ function App() {
 
     const handleSubmit = event => {
       event.preventDefault()
-      setMemberList(old => [...old, user])
+      setMemberList(prev => [...prev, user])
     }
 
     const handleEdit = event => {
@@ -51,7 +53,6 @@ function App() {
         memberList= {memberList}
         handleEdit={handleEdit}
       />
-      
     </div>
   );
 }

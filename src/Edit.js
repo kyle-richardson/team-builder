@@ -15,6 +15,12 @@ const Edit = (props) => {
                             onClick={e=> props.handleEdit(e)}>
                                 Edit
                         </span>
+                        <span
+                            className="delete-button"
+                            name="delete"
+                            onCLick={console.log('deleted')}>
+                                Delete
+                        </span>
                         <p>Email: {member.email}</p>
                         <p>Role: {member.role}</p>
                     </div> 

@@ -7,7 +7,8 @@ function App() {
   const [user, setUser] = useState({
     name: '',
     email: '',
-    role: ''
+    role: '',
+    isShow: false
   })
 
   const [isEdit, setIsEdit] = useState(false)
@@ -20,7 +21,8 @@ function App() {
     setUser({
       name: '',
       email: '',
-      role: ''
+      role: '',
+      isShow: false
     })
   }
   const editUser = userInfo => {
@@ -64,6 +66,10 @@ function App() {
     setUser({ ...user, [name]: value});
   }
 
+  const handleShow = ind => {
+    memberList[ind].isShow = true;
+  }
+
   const handleSubmit = event => {
     event.preventDefault()
     if(isEdit) {
@@ -95,6 +101,7 @@ function App() {
         isEdit={isEdit}
         setIsEdit={setIsEdit}
         deleteUser={deleteUser}
+        handleShow={handleShow}
       />
     </div>
   );

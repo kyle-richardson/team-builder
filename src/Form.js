@@ -4,7 +4,8 @@ import Edit from "./Edit"
 const Form = (props) => {
     const {isEdit, memberToEdit, setUser, 
         memberList, handleEdit, setMemberToEdit, 
-        deleteUser, handleSubmit, user, handleChange} = props
+        deleteUser, handleSubmit, user, handleChange,
+        handleShow} = props
 
     useEffect(()=> {
         if(isEdit) {
@@ -19,6 +20,7 @@ const Form = (props) => {
                 handleEdit={handleEdit}
                 setMemberToEdit={setMemberToEdit}
                 deleteUser={deleteUser}
+                handleShow={handleShow}
             />
 
             <form className="user-form" onSubmit={handleSubmit}>

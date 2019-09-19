@@ -8,7 +8,13 @@ const Edit = (props) => {
                 return (
                     <div className="member-card">
                         <div className="header-card">
-                            <h3>{member.name}</h3>
+                            <h3 >{member.name}</h3>
+                            <span 
+                                className="show-button" 
+                                name="show-more" 
+                                onClick={()=> props.handleShow(ind)}>
+                                    Show details
+                            </span>
                             <span 
                                 className="edit-button" 
                                 name="edit" 

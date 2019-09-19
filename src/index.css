@@ -42,12 +42,17 @@ code {
   /* align-items: center; */
 }
 
-.text-input {
+.text-input, .select-input {
   margin: 10px 0;
   border: 1px solid darkgray;
   height: 25px;
   padding: 5px;
   border-radius: 8px;
+}
+
+.select-input {
+  margin-bottom: 20px;
+  height: 35px;
 }
 
 .add-button {

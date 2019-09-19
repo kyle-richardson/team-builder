@@ -3,18 +3,7 @@ import './App.css';
 import Form from "./Form"
 
 function App() {
-  const [memberList, setMemberList] = useState([]
-    // [{
-    //   name: 'kyle',
-    //   email: 'test@test.com',
-    //   role: 'front-end'
-    // }, 
-    // {
-    //   name: 'lauren',
-    //   email: 'test2@test.com',
-    //   role: 'content creator'
-    // }]
-    )
+  const [memberList, setMemberList] = useState([])
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -25,7 +14,6 @@ function App() {
   const [memberToEdit, setMemberToEdit] = useState({})
 
   useEffect(() => {
-  // console.log(memberList);
   },[memberList])
 
   const resetUser = ()=> {
@@ -57,7 +45,7 @@ function App() {
     }
     else if(!(email.includes('@') && email.includes('.'))){
       alert('Email is not valid')
-      bool=false;
+      bool = false
     }
     if(role==='default' || role==='') {
       alert('Please choose a role')
@@ -88,7 +76,6 @@ function App() {
   }
 
   const handleEdit = (index) => {
-    console.log(`starting to edit user at index ${index}`)
     setIsEdit(true)
     setMemberToEdit(index)
   }

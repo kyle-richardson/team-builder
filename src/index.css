@@ -12,12 +12,19 @@ code {
     monospace;
 }
 
+h3 {
+  font-size: 1.6rem
+}
+h1 {
+  font-size: 2.4rem;
+}
+
 .edit-button,.delete-button {
   border: 1px solid black;
-  padding: 8px;
+  padding: 5px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: .9rem;
+  font-size: .6rem;
 }
 .edit-button:hover,.delete-button:hover {
   border: 1px solid white;
@@ -29,17 +36,12 @@ code {
   background-color: darkgray;
 }
 
-.delete-button {
-  margin-left: 10px;
-}
-
 .user-form {
   display: flex;
   flex-direction: column;
   width: 80%;
   margin: 20px auto;
   max-width: 400px;
-  /* align-items: center; */
 }
 
 .text-input, .select-input {
@@ -77,9 +79,18 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
-  /* margin-left: 100px; */
 }
 .member-card {
   /* text-align: left; */
+}
+
+.header-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-card > * {
+  margin: 0 10px;
 }

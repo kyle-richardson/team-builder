@@ -43,7 +43,11 @@ const Form = (props) => {
                     name="role" 
                     value={user.role} 
                     onChange={handleChange}/>
-                <button className="add-button">{isEdit ? `Save Member Info`:`Add to member list`}</button>
+                <button className="add-button">{
+                    isEdit 
+                    ? `Save Member Info`
+                    : `Add to member list`
+                    }</button>
                 
             </form>
         </div>

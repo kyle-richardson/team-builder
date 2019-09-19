@@ -4,7 +4,6 @@ const Edit = (props) => {
     const members = props.memberList
     return (
         <div>
-            {/* <h2>Member List:</h2> */}
             <div className="members-container">
                 {members.map((member,ind) => {
                     return (

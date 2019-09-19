@@ -24,36 +24,59 @@ function App() {
   const [memberToEdit, setMemberToEdit] = useState({})
 
   useEffect(() => {
-  console.log(memberList);
+  // console.log(memberList);
   },[memberList])
 
-    const handleChange = event => {
-      const name = event.target.name
-      const value = event.target.value;
-      setUser({ ...user, [name]: value});
-    }
+  const editUser = userInfo => {
+    memberList[memberToEdit] = userInfo 
+    setMemberToEdit('')
+  }
 
-    const handleSubmit = event => {
-      event.preventDefault()
-      setMemberList(prev => [...prev, user])
-    }
+  const deleteUser = userId=> {
+    memberList.splice(userId, 1)
+    setMemberList(prev => [...prev])
+  }
 
-    const handleEdit = event => {
+  const handleChange = event => {
+    const {name, value} = event.target
+    setUser({ ...user, [name]: value});
+  }
 
-      setIsEdit(true)
-      console.log(`editing ${event.target.name}`)
+  const handleSubmit = event => {
+    event.preventDefault()
+    if(isEdit) {
+      setIsEdit(false)
+      editUser(user)
     }
+    else setMemberList(prev => [...prev, user])
+    setUser({
+      name: '',
+      email: '',
+      role: ''
+    })
+  }
+
+  const handleEdit = (index) => {
+    console.log(`starting to edit user at index ${index}`)
+    setIsEdit(true)
+    setMemberToEdit(index)
+  }
 
   return (
     <div className="App">
       <h1>Lambda Member List</h1>
       <Form 
         user={user} 
+        setUser={setUser}
         handleChange = {handleChange}
         handleSubmit= {handleSubmit}
         memberList= {memberList}
         handleEdit={handleEdit}
         setMemberToEdit={setMemberToEdit}
+        memberToEdit={memberToEdit}
+        isEdit={isEdit}
+        setIsEdit={setIsEdit}
+        deleteUser={deleteUser}
       />
     </div>
   );

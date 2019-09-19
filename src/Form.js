@@ -1,38 +1,49 @@
-import React from "react"
+import React, {useEffect} from "react"
 import Edit from "./Edit"
 
 const Form = (props) => {
+    const {isEdit, memberToEdit, setUser, 
+        memberList, handleEdit, setMemberToEdit, 
+        deleteUser, handleSubmit, user, handleChange} = props
+
+    useEffect(()=> {
+        if(isEdit) {
+            setUser(memberList[memberToEdit])
+        }
+    }, [memberToEdit])
 
     return (
         <div>
             <Edit 
-                memberList={props.memberList} 
-                handleEdit={props.handleEdit}
-                setMemberToEdit={props.setMemberToEdit}/>
+                memberList={memberList} 
+                handleEdit={handleEdit}
+                setMemberToEdit={setMemberToEdit}
+                deleteUser={deleteUser}
+            />
 
-            <form className="user-form" onSubmit={(e)=> props.handleSubmit(e)}>
+            <form className="user-form" onSubmit={handleSubmit}>
                 <input 
                     className="text-input"
                     type="text" 
                     placeholder="Name" 
                     name="name" 
-                    value={props.user.name} 
-                    onChange={e=> props.handleChange(e)}/>
+                    value={user.name} 
+                    onChange={handleChange}/>
                 <input 
                     className="text-input"
                     type="text" 
                     placeholder="Email" 
                     name="email" 
-                    value={props.user.email} 
-                    onChange={e=> props.handleChange(e)}/>
+                    value={user.email} 
+                    onChange={handleChange}/>
                 <input 
                     className="text-input"
                     type="text" 
                     placeholder="Role" 
                     name="role" 
-                    value={props.user.role} 
-                    onChange={e=> props.handleChange(e)}/>
-                <button className="add-button">Add to member list</button>
+                    value={user.role} 
+                    onChange={handleChange}/>
+                <button className="add-button">{isEdit ? `Save Member Info`:`Add to member list`}</button>
                 
             </form>
         </div>

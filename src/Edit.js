@@ -6,20 +6,20 @@ const Edit = (props) => {
         <div>
             {/* <h2>Member List:</h2> */}
             <div className="members-container">
-                {members.map(member => {
+                {members.map((member,ind) => {
                     return (
                         <div className="member-card">
                             <h3>Name: {member.name}</h3>
                             <span 
                                 className="edit-button" 
                                 name="edit" 
-                                onClick={e=> props.handleEdit(e)}>
+                                onClick={()=> props.handleEdit(ind)}>
                                     Edit
                             </span>
                             <span
                                 className="delete-button"
                                 name="delete"
-                                onCLick={console.log('deleted')}>
+                                onClick={()=> props.deleteUser(ind)}>
                                     Delete
                             </span>
                             <p>Email: {member.email}</p>

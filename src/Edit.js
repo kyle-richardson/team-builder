@@ -1,6 +1,7 @@
 import React from "react"
 
 const Edit = (props) => {
+
     const members = props.memberList
     return (
         <div className="members-container">
@@ -12,22 +13,20 @@ const Edit = (props) => {
                             <div className="button-container">
                                 <span 
                                     className="show-button"
-                                    name="show-more" 
-                                    onClick={()=> {
-                                        props.handleShow(ind)}
-                                    }>
+                                    name="show"
+                                    onClick={(e)=>props.handleButtons(e,ind)}>
                                         {member.isShow ? "Hide Details" : "Show Details"}
                                 </span>
                                 <span 
                                     className="edit-button" 
                                     name="edit" 
-                                    onClick={()=> props.handleEdit(ind)}>
+                                    onClick={(e)=>props.handleButtons(e,ind)}>
                                         Edit
                                 </span>
                                 <span
                                     className="delete-button"
                                     name="delete"
-                                    onClick={()=> props.deleteUser(ind)}>
+                                    onClick={(e)=>props.handleButtons(e,ind)}>
                                         Delete
                                 </span>
                             </div>

@@ -1,9 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import Form from "./Form"
+import Functions from "./functions"
 
 function App() {
-  const [memberList, setMemberList] = useState([])
+  const [memberList, setMemberList] = useState([{
+    name: 'kyle',
+    email: 'kyle.ri@a.com',
+    role: 'front-end',
+    isShow: false
+  }])
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -97,6 +103,19 @@ function App() {
     setMemberToEdit(index)
   }
 
+  const handleButtons = (event, index) => {
+    const buttonType = event.target.getAttribute('name')
+    if (buttonType==="show") {
+      handleShow(index)
+    }
+    if(buttonType==="edit"){
+      handleEdit(index)
+    }
+    if(buttonType==="delete") {
+      deleteUser(index)
+    }
+  }
+
   return (
     <div className="App">
       <h1>Lambda Member List</h1>
@@ -106,13 +125,9 @@ function App() {
         handleChange = {handleChange}
         handleSubmit= {handleSubmit}
         memberList= {memberList}
-        handleEdit={handleEdit}
-        setMemberToEdit={setMemberToEdit}
         memberToEdit={memberToEdit}
         isEdit={isEdit}
-        setIsEdit={setIsEdit}
-        deleteUser={deleteUser}
-        handleShow={handleShow}
+        handleButtons={handleButtons}
       />
     </div>
   );

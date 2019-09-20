@@ -71,8 +71,7 @@ function App() {
 
   const deleteUser = userId=> {
     if(!isEdit) {
-      memberList.splice(userId, 1)
-      setMemberList(prev => [...prev])
+      setMemberList(prevState => (prevState.filter((_,i) => i !== userId) ));
     }
     else alert('Cannot delete while editing a user')
   }
@@ -83,8 +82,9 @@ function App() {
   }
 
   const handleShow = ind => {
-    memberList[ind].isShow = !memberList[ind].isShow;
-    setMemberList(prev => [...prev])
+    const tempList =[...memberList]
+    tempList[ind].isShow = !memberList[ind].isShow
+    setMemberList(tempList)
   }
 
   const handleSubmit = event => {

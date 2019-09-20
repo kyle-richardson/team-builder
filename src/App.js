@@ -45,7 +45,14 @@ function App() {
       alert('Email cannot be empty')
       bool = false
     }
-    else if(!(email.includes('@') && email.includes('.'))){
+    else if(
+      !email.includes('@') || 
+      !email.includes('.') ||
+      email.charAt(0)==='@' ||
+      email.charAt(0)==='.' || 
+      email.charAt(email.length-1)==='@' ||
+      email.charAt(email.length-1)==='.'
+      ) {
       alert('Email is not valid')
       bool = false
     }
@@ -57,8 +64,11 @@ function App() {
   }
 
   const deleteUser = userId=> {
-    memberList.splice(userId, 1)
-    setMemberList(prev => [...prev])
+    if(!isEdit) {
+      memberList.splice(userId, 1)
+      setMemberList(prev => [...prev])
+    }
+    else alert('Cannot delete while editing a user')
   }
 
   const handleChange = event => {
@@ -67,7 +77,8 @@ function App() {
   }
 
   const handleShow = ind => {
-    memberList[ind].isShow = true;
+    memberList[ind].isShow = !memberList[ind].isShow;
+    setMemberList(prev => [...prev])
   }
 
   const handleSubmit = event => {

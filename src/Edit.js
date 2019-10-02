@@ -7,7 +7,7 @@ const Edit = (props) => {
         <div className="members-container">
             {members.map((member,ind) => {
                 return (
-                    <div className="member-card">
+                    <div key={ind} className="member-card">
                         <div className="header-card">
                             <h3 >{member.name}</h3>
                             <div className="button-container">

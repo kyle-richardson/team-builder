@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './App.css';
 import Form from "./Form"
-import Functions from "./functions"
 
 function App() {
   const [memberList, setMemberList] = useState([{

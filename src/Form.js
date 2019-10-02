@@ -10,6 +10,7 @@ const Form = (props) => {
         if(isEdit) {
             setUser(memberList[memberToEdit])
         }
+        // eslint-disable-next-line
     }, [memberToEdit])
 
     return (

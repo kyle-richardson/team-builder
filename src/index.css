@@ -1,5 +1,8 @@
+
+
 body {
-  margin: 0;
+  background-color: #3ab678;
+  margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -10,4 +13,106 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h3 {
+  font-size: 1.6rem
+}
+h1 {
+  font-size: 2.4rem;
+}
+
+.App {
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.button-container > * {
+  border: 1px solid black;
+  padding: 5px;
+  cursor: pointer;
+  font-size: .6rem;
+  margin: 2px;
+}
+
+.button-container>*:hover {
+  background-color: lightgray;
+}
+
+.button-container>*:active {
+  background-color: darkgray;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.text-input, .select-input {
+  border: 0;
+  margin: 10px 0;
+  height: 25px;
+  padding: 5px;
+  font-size: 1.1rem;
+  background-color: #DBE2D0;
+  border-radius: 0;
+}
+
+.select-input {
+  margin-bottom: 20px;
+  height: 35px;
+}
+
+.add-button {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  background-color: rgb(70, 129, 238);
+  color: #DBE2D0;
+  border: 0;
+}
+
+.add-button:hover {
+  background-color: rgb(47, 108, 221);
+}
+.members-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.member-card {
+  background-color: #DBE2D0;
+  border: 2px solid rgb(70, 129, 238);
+  width: 100%;
+  max-width: 300px;
+  margin: 10px;
+  text-align: left;
+  padding: 0 10px;
+}
+
+.header-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.header-card > * {
+  margin: 0 10px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }

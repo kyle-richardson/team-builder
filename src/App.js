@@ -1,24 +1,132 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import Form from "./Form"
 
 function App() {
+  const [memberList, setMemberList] = useState([{
+    name: 'kyle',
+    email: 'kyle.ri@a.com',
+    role: 'front-end',
+    isShow: false
+  }])
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    role: '',
+    isShow: false
+  })
+
+  const [isEdit, setIsEdit] = useState(false)
+  const [memberToEdit, setMemberToEdit] = useState({})
+
+  useEffect(() => {
+  },[memberList])
+
+  const resetUser = ()=> {
+    setUser({
+      name: '',
+      email: '',
+      role: '',
+      isShow: false
+    })
+  }
+  const editUser = userInfo => {
+    if(checkValid(user)) {
+      memberList[memberToEdit] = userInfo 
+      setMemberToEdit('')
+      resetUser()
+      setIsEdit(false)
+    }  
+  }
+
+  const checkValid = userInfo => {
+    const {name, email, role} = userInfo
+    let bool = true
+    if(name==='') {
+      alert('Name cannot be empty')
+      bool = false
+    }
+    if(email==='') {
+      alert('Email cannot be empty')
+      bool = false
+    }
+    else if(
+      !email.includes('@') || 
+      !email.includes('.') ||
+      email.charAt(0)==='@' ||
+      email.charAt(0)==='.' || 
+      email.charAt(email.length-1)==='@' ||
+      email.charAt(email.length-1)==='.'
+      ) {
+      alert('Email is not valid')
+      bool = false
+    }
+    if(role==='default' || role==='') {
+      alert('Please choose a role')
+      bool = false
+    }
+    return bool
+  }
+
+  const deleteUser = userId=> {
+    if(!isEdit) {
+      setMemberList(prevState => (prevState.filter((_,i) => i !== userId) ));
+    }
+    else alert('Cannot delete while editing a user')
+  }
+
+  const handleChange = event => {
+    const {name, value} = event.target
+    setUser({ ...user, [name]: value});
+  }
+
+  const handleShow = ind => {
+    const tempList =[...memberList]
+    tempList[ind].isShow = !memberList[ind].isShow
+    setMemberList(tempList)
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    if(isEdit) {
+      editUser(user)
+    }
+    else if (checkValid(user)) {
+      setMemberList(prev => [...prev, user])
+      resetUser()
+    }
+  }
+
+  const handleEdit = (index) => {
+    setIsEdit(true)
+    setMemberToEdit(index)
+  }
+
+  const handleButtons = (event, index) => {
+    const buttonType = event.target.getAttribute('name')
+    if (buttonType==="show") {
+      handleShow(index)
+    }
+    if(buttonType==="edit"){
+      handleEdit(index)
+    }
+    if(buttonType==="delete") {
+      deleteUser(index)
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Lambda Member List</h1>
+      <Form 
+        user={user} 
+        setUser={setUser}
+        handleChange = {handleChange}
+        handleSubmit= {handleSubmit}
+        memberList= {memberList}
+        memberToEdit={memberToEdit}
+        isEdit={isEdit}
+        handleButtons={handleButtons}
+      />
     </div>
   );
 }
